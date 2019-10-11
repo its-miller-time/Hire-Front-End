@@ -6,7 +6,7 @@ function Position(props){
     const positionCards = props.positions.map((position,i)=>{
         return (
             <div key={i}>
-                <Link to="/candidates" key={i}>
+                <Link to={`/positions/${position.id}`} key={i}>
                     <PositionCard position={position} />
                 </Link>
             </div>

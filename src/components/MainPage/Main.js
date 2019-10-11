@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './Main.css';
-import CandidatesPage from '../CandidatesPage/CandidatesPage'
+import AllCandidatesPage from '../AllCandidatesPage/AllCandidatesPage'
 import cal from './calendar.svg'
 import money from './money.svg'
 import hero from './superhero.svg'
@@ -68,7 +68,7 @@ class Main extends Component{
             </div>
             <div className="main-candidates">
                 <h4>Check out some candidates</h4>
-                <CandidatesPage />
+                <AllCandidatesPage />
             </div>
             
             </>

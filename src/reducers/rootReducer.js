@@ -8,7 +8,7 @@ import positionCardReducer from './positionCardReducer';
 
 const rootReducer = combineReducers({
     candidateData: candidateCardReducer,
-    positionData: positionCardReducer
+    positionId: positionCardReducer
 })
 
 export default rootReducer

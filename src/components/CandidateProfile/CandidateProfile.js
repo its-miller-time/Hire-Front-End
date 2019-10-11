@@ -5,53 +5,71 @@ import './CandidateProfile.css';
 import about from './id-card.svg'
 import summaryIcon from './report.svg'
 import skillIcon from './tools.svg'
-
-
+import acceptDeclineCandidateAction from '../../actions/acceptDeclineCandidateAction'
+import { bindActionCreators } from 'redux';
 
 
 class CandidateProfile extends Component{
     state = {
-        candidate: {}
+        candidate: {},
+        position_id: ""
+    }
+
+    handleAcceptDecline = (e) => {
+        e.preventDefault();
+        const userId = this.state.candidate.id;
+        const position_id = this.state.position_id;
+        console.log(this.props);
+        const acceptDeclineValue = e.target.value
+        const data = {userId,acceptDeclineValue,position_id}
+        console.log('buttonwas clicked:',e)
+        this.props.acceptDeclineCandidateAction(data)
     }
 
     async componentDidMount(){
         const userId = this.props.match.params.id;
-        console.log(userId);
-        const url = `${window.apiHost}/candidates/candidateProfile/${userId}`
-        // const axiosResponse = await axios.get(url)
-        // this.setState({
-            //     candidate: {...axiosResponse.data[0], skills : JSON.parse(axiosResponse.data[0].skills)}
-            // })
-        const {data : [candidate]} = await axios.get(url)
+        const position_id = this.props.match.params.position_id;
+        console.log(position_id);
+        const url = `${window.apiHost}/candidates/candidateProfile/${position_id}/${userId}`
+        const axiosResponse = await axios.get(url)
         this.setState({
-            candidate : {
-                ... candidate, // spill in the contents from the axios requests, aliased as "candidate" for convenience 
-                skills : JSON.parse(candidate.skills) // overwrite the "skills" key with parsed data
-            }
-        })
+                candidate: axiosResponse.data[0],
+                position_id: position_id
+            })
+        // const {data : [candidate]} = await axios.get(url)
+        // this.setState({
+        //     candidate : {
+        //         ... candidate, // spill in the contents from the axios requests, aliased as "candidate" for convenience 
+        //         skills : JSON.parse(candidate.skills) // overwrite the "skills" key with parsed data
+        //     }
+        // })
     }
 
 
     render(){
-        // const userId = this.props.match.params['id']
-        console.log(this.state)
-        console.log(this.props)
-        // const candidate = this.props.candidateData.find(candidate=>candidate.id === userId)
         // eslint-disable-next-line no-unused-vars
-        const {nameFirst, nameLast,description, email, phone, most_recent_job_role, desired_job_role,years_of_experience,desired_salary_range,desired_location_city,skills,level_of_education,candidate_summary} = this.state.candidate
-        
-
+        const {id,name, nameLast,description, email, phone, title, desired_job_role,years_of_experience,desired_salary_range,desired_location_city,skills,level_of_education,candidate_summary} = this.state.candidate
+        let buttons;
+        if(this.state.position_id){
+            buttons =  <div className="row">
+                            <button onClick={this.handleAcceptDecline} value='1' className="candidate-profile-btn btn-large">Add Candidate</button>
+                            <button onClick={this.handleAcceptDecline} value='0' className="candidate-profile-btn btn-large">Decline Candidate</button>
+                        </div>  
+        } else {
+            buttons = <div>
+                        <button onClick={()=>this.props.history.push('/employer/addPosition')} className="candidate-profile-btn btn-large">Create a Position</button>
+                        </div>
+        }
 
         return(
             <div className='candidate-profile-full container'>
                 
                 <ul className="collection">
                     <li className="candidate-info collection-item avatar">
-                        <span className="title">{nameFirst} </span>
-                        <p>{most_recent_job_role} <br/>
+                        <span className="title">{name} </span>
+                        <p>{title} <br/>
                             {desired_location_city}
                         </p>
-                        {/* <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a> */}
                     </li>
                     <li className="candidate-skills collection-item avatar">
                         <span className="title">Skills</span>
@@ -60,7 +78,6 @@ class CandidateProfile extends Component{
                         <img src={skillIcon} alt="" className="col s1 square-icon" />
                         <p>{skills}</p>
                     </div>
-                        {/* <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a> */}
                     </li>
                     <li className="collection-item avatar">
                     <span className="title">Candidate Summary</span>
@@ -68,26 +85,9 @@ class CandidateProfile extends Component{
                         <img src={summaryIcon} alt="" className="col s1 square-icon" />
                         <p>{description}</p>
                     </div>
-                    {/* <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a> */}
                     </li>
-                    {/* <li className="collection-item avatar">
-                    <i className="material-icons circle red">play_arrow</i>
-                    <span className="title">Title</span>
-                    <p>First Line <br/>
-                        Second Line
-                    </p>
-                    <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
-                    </li> */}
                 </ul>
-                <div className="row">
-                    {/* example function for onClick below */}
-                    {/* ()=> {props.changeModalContent('signUp')} */}
-                    <button onClick={this.handleAddCandiate} className="candidate-profile-btn btn-large">Add Candidate</button>
-                    <button onClick={this.handleDeclineCandidate} className="candidate-profile-btn btn-large">Decline Candidate</button>
-                </div>
-
-
-                
+                {buttons}              
             </div>
         )
     }
@@ -99,6 +99,12 @@ function mapStateToProps(state){
     }
 }
 
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({
+        acceptDeclineCandidateAction: acceptDeclineCandidateAction
+    },dispatch)
+}
+
 
 // export default CandidateProfile;
-export default connect(mapStateToProps,null)(CandidateProfile)
+export default connect(mapStateToProps,mapDispatchToProps)(CandidateProfile)

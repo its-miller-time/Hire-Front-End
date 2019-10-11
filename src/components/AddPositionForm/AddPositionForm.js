@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
+import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import M from 'materialize-css';
 import { bindActionCreators } from 'redux';
 import addPositionAction from '../../actions/addPositionAction'
 import "./AddPositionForm.css"
-
+import axios from 'axios'
 
 
 
@@ -16,20 +17,28 @@ class AddPositionForm extends Component{
         skills: [],
         employer_position: "",
         years_of_experience: "",
+        payTier: "",
+        redirectToTrainingData: false,
+        position_id: ""
     }
 
-    submitPositionsForm = (e) => {
+    submitPositionsForm = async (e) => {
         e.preventDefault();
-        console.log(e)
+        console.log(e.target)
+        console.log(this.state)
         console.log('POSITION SUBMIT CLICKED')
         const positionData = {...this.state}
-        this.props.addPositionAction(positionData)
+        const createUserUrl = `${window.apiHost}/employers/create-position`
+        const {data} = await axios.post(createUserUrl,positionData)
+        console.log(data)
         this.setState({
             company_name: "",
             title:"",
             skills: [],
             employer_position: "",
             years_of_experience: "",
+            redirectToTrainingData: true,
+            position_id: data.position_id
         })
     }
 
@@ -71,43 +80,50 @@ class AddPositionForm extends Component{
     }
     
     render(){
-        return (
-            <div className="add-position-form container">
-                <h3>Add A Position</h3>
-                    <form className="col s12">
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <input value={this.state.company_name} onChange={this.handleCompanyNameChange} placeholder="Company Name" id="company-name" type="text" className="validate"/>
+        const redirectToTrainingData = this.state.redirectToTrainingData;
+        console.log(this.props)
+        if(redirectToTrainingData === true){
+            console.log(this.props)
+            return <Redirect to={`/positionTrainingData/${this.state.position_id}`} />
+        } else {
+            return (
+                <div className="add-position-form container">
+                    <h3>Add A Position</h3>
+                        <form className="col s12">
+                            <div className="row">
+                                <div className="input-field col s12">
+                                    <input value={this.state.company_name} onChange={this.handleCompanyNameChange} placeholder="Company Name" id="company-name" type="text" className="validate"/>
+                                </div>
+                                <div className='input-field col s12'>
+                                    <select id='positionTitle' value={this.state.title} onChange={this.handlePositionChange} ref="select">
+                                        <option value="">What Position Are You Hiring?</option>
+                                        <option value="Software Developer">Software Developer</option>
+                                        <option value="Mobile Application Developer">Mobile Application Developer</option>
+                                        <option value="Data Scientist">Data Scientist</option>
+                                        <option value="Project Manager">Project Manager</option>
+                                        <option value="Business Development Rep">Business Development Rep</option>
+                                    </select>
+                                </div>
+                                <div className='input-field col s12'>
+                                    <select id='yearsExperience' value={this.state.years_of_experience} onChange={this.handleExperienceChange} ref="select">
+                                        <option value="">Years of Experience?</option>
+                                        <option value="0-1">0-1</option>
+                                        <option value="2-3">2-3</option>
+                                        <option value="3-5">3-5</option>
+                                        <option value="5-10">5-10</option>
+                                        <option value="10+">10+</option>
+                                    </select>
+                                </div>
+                                <div className='input-field col s12' >
+                                    <div id="skills" className="chips chips-autocomplete"></div>
+                                </div>
+                                <button className="btn waves-effect waves-light blue-grey darken-1" type="submit" onClick={this.submitPositionsForm} name="action">Submit
+                                </button> 
                             </div>
-                            <div className='input-field col s12'>
-                                <select id='positionTitle' value={this.state.title} onChange={this.handlePositionChange} ref="select">
-                                    <option value="">What Position Are You Hiring?</option>
-                                    <option value="Software Developer">Software Developer</option>
-                                    <option value="Mobile Application Developer">Mobile Application Developer</option>
-                                    <option value="Data Scientist">Data Scientist</option>
-                                    <option value="Project Manager">Project Manager</option>
-                                    <option value="Business Development Rep">Business Development Rep</option>
-                                </select>
-                            </div>
-                            <div className='input-field col s12'>
-                                <select id='yearsExperience' value={this.state.years_of_experience} onChange={this.handleExperienceChange} ref="select">
-                                    <option value="">Years of Experience?</option>
-                                    <option value="0-1">0-1</option>
-                                    <option value="2-3">2-3</option>
-                                    <option value="3-5">3-5</option>
-                                    <option value="5-10">5-10</option>
-                                    <option value="10+">10+</option>
-                                </select>
-                            </div>
-                            <div className='input-field col s12' >
-                                <div id="skills" className="chips chips-autocomplete"></div>
-                            </div>
-                            <button className="btn waves-effect waves-light blue-grey darken-1" type="submit" onClick={this.submitPositionsForm} name="action">Submit
-                            </button> 
-                        </div>
-                    </form>
-            </div>
-        )
+                        </form>
+                </div>
+            )
+        }
     }
 }
 

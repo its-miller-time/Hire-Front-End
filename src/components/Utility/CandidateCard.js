@@ -7,16 +7,15 @@ class CandidateCard extends Component{
         this.state = {}
     }
     render(){
-        console.log(this.props.candidate)
         return(
                 <div className=" container">
                     <div className="row">
                         <div className="candidate-card-container col s12">
                             <div className="candidate-card card">
                             <div className="card-content white-text">
-                                <span className="card-title">{this.props.candidate.nameFirst} {this.props.candidate.nameLast}</span>
-                                <p>{this.props.candidate.desired_job_role}.</p>
-                                <p>{this.props.candidate.desired_location_city}.</p>
+                                <span className="card-title">{this.props.candidate.name}</span>
+                                <p>{this.props.candidate.title}.</p>
+                                <p>{this.props.candidate.location}.</p>
                             </div>
                             {/* <div className="card-action">
                                 <a href="#">LinkedIn</a>

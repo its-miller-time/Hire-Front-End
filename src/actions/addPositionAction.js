@@ -1,13 +1,15 @@
 import axios from 'axios';
 
-export default(positionData) => {
-    console.log(positionData)
+export default async (positionData) => {
+    console.log('add position action fired',positionData)
+
     const createUserUrl = `${window.apiHost}/employers/create-position`
-    const axiosResp = axios.post(createUserUrl,positionData)
+    const {data} = await axios.post(createUserUrl,positionData)
+    console.log('addPositionResutls:',data)
     return {
-        type: 'createPosition',
+        type: 'addPositionAction',
         payload: {
-            axiosResp
+            data
         }
     }
 }

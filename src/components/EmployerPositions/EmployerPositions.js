@@ -49,7 +49,7 @@ class EmployerPositions extends Component{
 
 function mapStateToProps(state){
     return {
-        positionData: state.positionData
+        // positionData: state.positionData
     }
 }
 
