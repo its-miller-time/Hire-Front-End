@@ -117,7 +117,7 @@ class AddPositionForm extends Component{
                                 <div className='input-field col s12' >
                                     <div id="skills" className="chips chips-autocomplete"></div>
                                 </div>
-                                <button className="btn waves-effect waves-light blue-grey darken-1" type="submit" onClick={this.submitPositionsForm} name="action">Submit
+                                <button className="button btn waves-effect waves-light" type="submit" onClick={this.submitPositionsForm} name="action">Submit
                                 </button> 
                             </div>
                         </form>

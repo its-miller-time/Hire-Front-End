@@ -23,22 +23,15 @@ class EmployerPositions extends Component{
     }
     
     render(){
-        // const positions = this.props.positionData.map((position,i) => {
-        //     return(
-        //         <Link to="/candidates" key={i}>
-        //             <PositionCard positions={position} key={i}/>
-        //         </Link>
-        //     )
-        // })
         return(
-            <div className="container-fluid col s12">
-                <h2 className="employer-positions-title">Open Positions</h2>
+            <div className="employer-positions-container container-fluid col s12">
+                <h3 className="employer-positions-title">Manage Positions</h3>
                 <div className='row'>
                     <div className="container col l6 m12 s12">
                         <AddPositionForm />
                     </div>
                     <div className="container col l6 m12 s12"> 
-                        <h3>Positions</h3>
+                        <h3>Open Positions</h3>
                         <Position positions={this.state.positions} />
                     </div>
                 </div>

@@ -12,6 +12,7 @@ class CandidatesPage extends Component{
 
     async componentDidMount(){
         console.log('AllCandidatesPage')
+        console.log(window.apiHost)
         const candidatesUrl = `${window.apiHost}/candidates/candidates`
         // const candidatesUrl = `${window.apiHost}/employers/positions/${positionId}`
         const axiosResp = await axios.get(candidatesUrl)
