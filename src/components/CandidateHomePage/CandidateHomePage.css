@@ -1,12 +1,16 @@
-.button {
+.candidate-home-page .button {
     background-color: black !important;
     border-radius: 5px;
     box-shadow: white 10px 10px;
     font-family: curveregular;
 }
 
-.button:hover{
+.candidate-home-page .button:hover{
     background-color: white !important;
     box-shadow: black 10px 10px;
     color: black;
+}
+
+.candidate-home-page h3{
+    padding-bottom: 20px !important;
 }

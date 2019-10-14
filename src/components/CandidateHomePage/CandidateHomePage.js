@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import './CandidateHomePage.css'
 
 class CandidateHomePage extends Component{
     
@@ -10,10 +11,10 @@ class CandidateHomePage extends Component{
                 //APPLY
             //SEARCH BAR
             //UPDATE PROFILE
-            <div className="container">
-                <h1>Candidate Home Page</h1>
+            <div className="container candidate-home-page">
+                <h3 className="candiate-home-page-title">Candidate Home Page</h3>
                 <div className="row">
-                    <Link to='/candidateHome/createprofile' className="waves-effect waves-light btn-large blue-grey darken-2"><i className="material-icons right"></i>Create Profile</Link>
+                    <Link to='/candidateHome/createprofile' className="button waves-effect waves-light btn-large"><i className="material-icons right"></i>Create Profile</Link>
                 </div>
 
             </div>

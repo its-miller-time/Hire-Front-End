@@ -18,12 +18,12 @@ class Main extends Component{
     render(){
         return(<>
             <div className="container row hero-container">
-                <div className="container hero-title col s6">
-                    <h5>Find Better Candidates</h5>
+                <div className="container hero-title col l6 m12 s12">
+                    <h2 className='logo'>Hire</h2>
                     <br></br>
-                    <h5>Faster</h5>
+                    <h5>Find Better Candidates Faster</h5>
                 </div>
-                <div className="col s6 banner-main"></div>
+                <div className="col s6 banner-main hide-on-med-and-down"></div>
             </div>
             
             <div >
@@ -48,7 +48,7 @@ class Main extends Component{
                 <div className="main-body-description">
                     <div className="row desc-container">
                         <img src={`${cal}`} className="col m2 s12 "/>
-                        <p className="col s10">
+                        <p>
                             SAVE TIME
                         </p>
                     </div>
@@ -66,7 +66,7 @@ class Main extends Component{
                     </div>
                 </div>
             </div>
-            <div className="main-candidates">
+            <div className="container main-candidates s12">
                 <h4>Check out some candidates</h4>
                 <AllCandidatesPage />
             </div>
