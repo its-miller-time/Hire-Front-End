@@ -11,7 +11,6 @@ class CreateProfile extends Component{
 
     state = {
         name: "",
-        nameLast: "",
         email: "",
         phone: "",
         password: "",
@@ -22,12 +21,8 @@ class CreateProfile extends Component{
         title: ""
     }
     
-    handleFirstNameChange = (e) => {
-        this.setState({nameFirst:e.target.value})
-    }
-
-    handleLastNameChange = (e) => {
-        this.setState({nameLast:e.target.value})
+    handleNameChange = (e) => {
+        this.setState({name:e.target.value})
     }
 
     handleEmailChange = (e) => {
@@ -44,6 +39,10 @@ class CreateProfile extends Component{
 
     handleExperienceChange = (e) => {
         this.setState({years_of_experience: e.target.value})
+    }
+
+    handlePositionChange = (e) =>{
+        this.setState({title: e.target.value})
     }
 
     handleFormSubmit = (e) => {
@@ -75,81 +74,65 @@ class CreateProfile extends Component{
     }
     
     render(){
-        return(
-            <div className="container create-user-profile">
-                <h4>Create Profile</h4>
-                <div className="row">
-                    <form action="submit" className="col s12">
-
-                    <div className="row">
-                        <div className="input-field col s12">
-                            <input value={this.state.name} onChange={this.handleFirstNameChange} placeholder="Name" id="first_name" type="text" className="validate"/>
-                        <label htmlFor="first_name"></label>
-                        </div>
-                        {/* <div className="input-field col s6">
-                            <input value={this.state.nameLast} onChange={this.handleLastNameChange} placeholder="Last Name" id="last_name" type="text" className="validate"/>
-                        <label htmlFor="last_name"></label>
-                        </div> */}
-                    </div>
-                    
-                    <div className="row">
-                        <div className="input-field col s12">
-                            <input value={this.state.email} onChange={this.handleEmailChange} placeholder="Email" id="disabled" type="email" className="validate"/>
-                        <label htmlFor="email"></label>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="input-field col s12">
-                            <input value={this.state.phone} onChange={this.handlePhoneChange} placeholder="Phone Number" id="phone" type="number" className="validate"/>
-                        <label htmlFor="phone_number"></label>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="input-field col s12">
-                            <input value={this.state.password} onChange={this.handlePasswordChange} placeholder="password" id="pass" type="password" className="validate"/>
-                        <label htmlFor="pass"></label>
-                        </div>
-                    </div>
-
-                        <div className="file-field input-field ">
-                            <div className="button waves-effect waves-light btn-large">
-                                <span>File</span>
-                                <input type="file" multiple />
+        return (
+            <div className="add-position-form container">
+                <h4>Create a Profile</h4>
+                    <form className="col s12">
+                        <div className="row">
+                            <div className="input-field col s12">
+                                <input value={this.state.name} onChange={this.handleNameChange} placeholder=" Name" id="name" type="text" className="validate"/>
                             </div>
 
-                            <div className="file-path-wrapper">
-                                <input className="file-path validate" type="text" placeholder="Upload one or more files"/>
+                        <div className="row">
+                            <div className="input-field col m6 s12">
+                                <input value={this.state.email} onChange={this.handleEmailChange} placeholder="Email" id="disabled" type="email" className="validate"/>
+                                <label htmlFor="email"></label>
+                            </div>
+                            <div className="input-field col m6 s12">
+                                <input value={this.state.phone} onChange={this.handlePhoneChange} placeholder="Phone Number" id="phone" type="text" className="validate"/>
+                            <label htmlFor="phone_number"></label>
                             </div>
                         </div>
-                    
-                    <div className='input-field col s12'>
-                        <select id='yearsExperience' value={this.state.years_of_experience} onChange={this.handleExperienceChange} ref="select">
-                            <option value="">Years of Experience?</option>
-                            <option value="1">0-1</option>
-                            <option value="2">2-3</option>
-                            <option value="3">3-5</option>
-                            <option value="4">5-10</option>
-                            <option value="5">10+</option>
-                        </select>
-                    </div>
-                    <div className='input-field col s12'>
-                        <select id='positionTitle' value={this.state.title} onChange={this.handlePositionChange} ref="select">
-                            <option value="">What job are you looking for?</option>
-                            <option value="Software Developer">Software Developer</option>
-                            <option value="Mobile Application Developer">Mobile Application Developer</option>
-                            <option value="Data Scientist">Data Scientist</option>
-                            <option value="Project Manager">Project Manager</option>
-                            <option value="Business Development Rep">Business Development Rep</option>
-                        </select>
-                    </div>
-                    <div className='input-field col s12' >
-                        <div id="user-skills" className="chips chips-autocomplete"></div>
-                    </div>
-                    <div className="input-field row">
-                        <input onClick={this.handleFormSubmit}className="button waves-effect btn-large " type="submit" value="submit" />
-                    </div>
+
+                        <div className="row">
+                            
+                        </div>
+
+                        <div className="row">
+                            <div className="input-field col s12">
+                                <input value={this.state.password} onChange={this.handlePasswordChange} placeholder="password" id="pass" type="password" className="validate"/>
+                            <label htmlFor="pass"></label>
+                            </div>
+                        </div>
+
+                        
+                            <div className='input-field col s12'>
+                                <select id='positionTitle' value={this.state.title} onChange={this.handlePositionChange} ref="select">
+                                    <option value="">What position are you looking for?</option>
+                                    <option value="Software Developer">Software Developer</option>
+                                    <option value="Mobile Application Developer">Mobile Application Developer</option>
+                                    <option value="Data Scientist">Data Scientist</option>
+                                    <option value="Project Manager">Project Manager</option>
+                                    <option value="Business Development Rep">Business Development Rep</option>
+                                </select>
+                            </div>
+                            <div className='input-field col s12'>
+                                <select id='yearsExperience' value={this.state.years_of_experience} onChange={this.handleExperienceChange} ref="select">
+                                    <option value="">Years of Experience?</option>
+                                    <option value="0-1">0-1</option>
+                                    <option value="2-3">2-3</option>
+                                    <option value="3-5">3-5</option>
+                                    <option value="5-10">5-10</option>
+                                    <option value="10+">10+</option>
+                                </select>
+                            </div>
+                            <div className='input-field col s12' >
+                                <div id="skills" className="chips chips-autocomplete"></div>
+                            </div>
+                            <button className="button btn waves-effect waves-light" type="submit" onClick={this.handleFormSubmit} name="action">Submit
+                            </button> 
+                        </div>
                     </form>
-                </div>
             </div>
         )
     }
