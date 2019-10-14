@@ -1,3 +1,11 @@
+.candidate-home-title {
+    margin:70px 0 70px 0;
+    background-color: rgba(255,190,46,.9);
+    padding: 40px;
+    align-content: center;
+    font-family: curvebold;
+}
+
 .candidate-home-page .button {
     background-color: black !important;
     border-radius: 5px;
@@ -13,4 +21,5 @@
 
 .candidate-home-page h3{
     padding-bottom: 20px !important;
+    line-height: 5rem;
 }

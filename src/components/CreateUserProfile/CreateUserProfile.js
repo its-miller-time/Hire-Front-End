@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import createProfileAction from '../actions/createProfileAction'
+import createProfileAction from '../../actions/createProfileAction'
 import { bindActionCreators } from 'redux';
 import M from 'materialize-css';
+import './CreateUserProfile.css'
 
 
 
 class CreateProfile extends Component{
 
     state = {
-        nameFirst: "",
+        name: "",
         nameLast: "",
         email: "",
         phone: "",
@@ -75,20 +76,20 @@ class CreateProfile extends Component{
     
     render(){
         return(
-            <div className="container">
-                <h1>Create Profile</h1>
+            <div className="container create-user-profile">
+                <h4>Create Profile</h4>
                 <div className="row">
                     <form action="submit" className="col s12">
 
                     <div className="row">
-                        <div className="input-field col s6">
-                            <input value={this.state.nameFirst} onChange={this.handleFirstNameChange} placeholder="First Name" id="first_name" type="text" className="validate"/>
+                        <div className="input-field col s12">
+                            <input value={this.state.name} onChange={this.handleFirstNameChange} placeholder="Name" id="first_name" type="text" className="validate"/>
                         <label htmlFor="first_name"></label>
                         </div>
-                        <div className="input-field col s6">
+                        {/* <div className="input-field col s6">
                             <input value={this.state.nameLast} onChange={this.handleLastNameChange} placeholder="Last Name" id="last_name" type="text" className="validate"/>
                         <label htmlFor="last_name"></label>
-                        </div>
+                        </div> */}
                     </div>
                     
                     <div className="row">
@@ -111,7 +112,7 @@ class CreateProfile extends Component{
                     </div>
 
                         <div className="file-field input-field ">
-                            <div className="waves-effect waves-light btn-large blue-grey darken-2">
+                            <div className="button waves-effect waves-light btn-large">
                                 <span>File</span>
                                 <input type="file" multiple />
                             </div>
@@ -145,7 +146,7 @@ class CreateProfile extends Component{
                         <div id="user-skills" className="chips chips-autocomplete"></div>
                     </div>
                     <div className="input-field row">
-                        <input onClick={this.handleFormSubmit}className="waves-effect waves-light btn-large blue-grey darken-2" type="submit" value="submit" />
+                        <input onClick={this.handleFormSubmit}className="button waves-effect btn-large " type="submit" value="submit" />
                     </div>
                     </form>
                 </div>

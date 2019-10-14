@@ -5,6 +5,7 @@ import AllCandidatesPage from '../AllCandidatesPage/AllCandidatesPage'
 import cal from './calendar.svg'
 import money from './money.svg'
 import hero from './superhero.svg'
+import heroalt from './superhero_alt.svg'
 
 //IMPORT ACTION CREATOR HERE
 
@@ -59,7 +60,7 @@ class Main extends Component{
                         </p>
                     </div>
                     <div className="row desc-container">
-                        <img src={`${hero}`} className="col m2 s12 "/>
+                        <img src={`${heroalt}`} className="col m2 s12 "/>
                         <p>
                             FIND BETTER PEOPLE
                         </p>

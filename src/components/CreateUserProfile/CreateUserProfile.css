@@ -1,0 +1,17 @@
+.create-user-profile .button {
+    background-color: black !important;
+    border-radius: 5px;
+    box-shadow: white 10px 10px;
+    color: white;
+    font-family: curveregular;
+}
+
+.create-user-profile .button:hover{
+    background-color: white !important;
+    box-shadow: black 10px 10px;
+    color: black;
+}
+
+.create-user-profile h4 {
+    margin-bottom: 5rem;
+}

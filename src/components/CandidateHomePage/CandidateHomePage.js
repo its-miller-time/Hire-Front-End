@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './CandidateHomePage.css'
 
+
 class CandidateHomePage extends Component{
     
     render(){
@@ -11,8 +12,8 @@ class CandidateHomePage extends Component{
                 //APPLY
             //SEARCH BAR
             //UPDATE PROFILE
-            <div className="container candidate-home-page">
-                <h3 className="candiate-home-page-title">Candidate Home Page</h3>
+            <div className="container-fluid candidate-home-title candidate-home-page">
+                <h3 className="">Candidate Home Page</h3>
                 <div className="row">
                     <Link to='/candidateHome/createprofile' className="button waves-effect waves-light btn-large"><i className="material-icons right"></i>Create Profile</Link>
                 </div>

@@ -16,7 +16,7 @@ class NavBar extends Component{
                     <div className="nav transparent yllow">
                     <Link to="/" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">H</i></Link>
                     <ul id="" className="hide-on-med-and-down">    
-                        <li className="nav"><Link to="/login">Login/SignUp</Link></li>
+                        {/* <li className="nav"><Link to="/login">Login/SignUp</Link></li> */}
                         <li className="nav"><Link to="/">HOME</Link></li>
                         <li><Link to="/candidates">CANDIDATES</Link></li>
                         <li><Link to="/employerHome/positions">OPEN POSITIONS</Link></li>

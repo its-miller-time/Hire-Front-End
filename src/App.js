@@ -7,7 +7,7 @@ import NavBar from './components/NavBar/NavBar';
 import CandidatesPage from './components/CandidatesPage/CandidatesPage';
 import CandidateHomePage from './components/CandidateHomePage/CandidateHomePage';
 import EmployerHomePage from './components/EmployerHomePage';
-import CreateProfile from './components/CreateUserProfile';
+import CreateProfile from './components/CreateUserProfile/CreateUserProfile';
 import EmployerPositions from './components/EmployerPositions/EmployerPositions';
 import AddPositionForm from './components/AddPositionForm/AddPositionForm';
 import CandidateProfile from './components/CandidateProfile/CandidateProfile';
