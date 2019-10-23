@@ -1,8 +1,8 @@
-#Hire
+# Hire
 
-###Details to come soon!
+### Details to come soon!
 
-###Technologies/Concepts Used
+### Technologies/Concepts Used
 - JavaScript
 - React/Redux
 - Express
