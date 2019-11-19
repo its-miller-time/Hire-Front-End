@@ -18,6 +18,7 @@ Hire is a machine learning application that helps companies filter through job a
 
 ### Back End
 - Express/Node
+- MySQL
 
 ### Web scraping
 - Python
