@@ -11,11 +11,19 @@ Hire is a machine learning application that helps companies filter through job a
 ![hire](./public/hire_manage_positions.png)
 
 # Technologies/Concepts Used
+### Front End: 
 - JavaScript
 - React/Redux
-- Express
 - Materialize 
+
+### Back End
+- Express/Node
+
+### Web scraping
 - Python
 - Selenium 
+
+### Machine Learning
 - Pandas
-- Machine Learning
+- numpy
+- sklearn  
